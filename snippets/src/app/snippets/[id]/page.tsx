@@ -4,9 +4,9 @@ import { notFound } from "next/navigation";
 import * as actions from "@/actions";
 
 interface SnippetShowPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default async function SnipppetShowPage(props: SnippetShowPageProps) {
