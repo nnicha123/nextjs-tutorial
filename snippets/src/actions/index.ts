@@ -1,6 +1,7 @@
 "use server";
 
 import { db } from "@/db";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export async function editSnippet(id: number, code: string) {
@@ -8,6 +9,7 @@ export async function editSnippet(id: number, code: string) {
     where: { id },
     data: { code },
   });
+  revalidatePath(`/snippets/${id}`);
   redirect(`/snippets/${id}`);
 }
 
@@ -15,6 +17,8 @@ export async function deleteSnippet(id: number) {
   await db.snippet.delete({
     where: { id },
   });
+  // redirect to home - but make sure there's no caching because data has definately changed
+  revalidatePath("/");
   redirect("/");
 }
 
@@ -58,6 +62,7 @@ export async function createSnippet(
     }
   }
 
-  // Redirect the user back to root route
+  // Redirect the user back to root route - but make sure there's no caching because data has definately changed
+  revalidatePath("/");
   redirect("/");
 }
