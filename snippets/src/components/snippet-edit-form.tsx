@@ -25,7 +25,7 @@ export default function SnippetEditForm({ snippet }: SnippetEditFormProps) {
         theme="vs-dark"
         language="javascript"
         defaultValue={snippet.code}
-        options={{ minmap: { enabled: false } }}
+        options={{ minimap: { enabled: false } }}
         onChange={handleEditorChange}
       />
       <form action={editSnippetAction}>
