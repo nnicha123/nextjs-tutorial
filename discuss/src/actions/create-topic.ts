@@ -30,7 +30,6 @@ export async function createTopic(
   formState: CreateTopicFormState,
   formData: FormData
 ): Promise<CreateTopicFormState> {
-  // Revalidate home page
   const result = createTopicSchema.safeParse({
     name: formData.get("name"),
     description: formData.get("description"),
