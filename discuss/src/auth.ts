@@ -23,6 +23,7 @@ export const {
       clientSecret: GITHUB_CLIENT_SECRET,
     }),
   ],
+  trustHost: true,
   callbacks: {
     // usually not needed, here we are fixing a bug in nextauth
     async session({ session, user }) {
